@@ -1,3 +1,5 @@
+import automagica as magic
+
 def get_btcusd():
     # TODO:
     ## wrap with try-catches for robust execution
@@ -18,3 +20,4 @@ def get_btcusd():
     print(BTCUSD)
     return BTCUSD
     
+get_btcusd()
