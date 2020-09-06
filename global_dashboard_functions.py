@@ -4,11 +4,12 @@ import sys
 def get_btcusd():
     # TODO:
     ## wrap with try-catches for robust execution
-    ## add drag_mouse activities to be more human-like
-    browser = magic.activities.Chrome()
+    browser = magic.activities.Chrome(); get_browser_foreground(browser)
     browser.browse_to("https://www.google.com")
-    sys.exit()
-    search_bar = browser.find_element_by_xpath("//*[@id='tsf']/div[2]/div[1]/div[1]/div/div[2]/input")
+    search_bar = browser.find_element_by_xpath("//*[@id='tsf']/div[2]/div[1]/div[1]/div/div[2]/input") #605, 413
+    get_browser_foreground(browser)
+    mouse.move(605, 413, duration=1) # move mouse to searchbar
+    mouse.click()
     while(not (search_bar.is_displayed() and search_bar.is_enabled()) ):
         magic.wait(1)
     search_bar.send_keys("btcusd")
@@ -17,8 +18,9 @@ def get_btcusd():
         magic.wait(1)
     search_button.click()
     value = browser.find_element_by_xpath("//*[@id='knowledge-currency__updatable-data-column']/div[1]/div[2]/span[1]")
+    mouse.move(270,352, duration=1.2) # move movuse to bitcoin value
     BTCUSD = float(value.text.replace(".","").replace(",",".")) # convert "10.164,60" str to fload value
-    browser.close()
+    magic.wait(2);browser.close()
     print(BTCUSD)
     return BTCUSD
     
