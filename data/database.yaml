@@ -1,0 +1,33 @@
+
+version: "3.6"
+
+services:
+    db:
+        image: postgres:12.2
+        restart: always
+    environment:
+        POSTGRES_DB: postgres
+        POSTGRES_USER: admin
+        POSTGRES_PASSWORD: secret
+        PGDATA: /var/lib/postgresql/data
+    volumes:
+        - /workspaces/Dev/dashboard-global/data/db:/var/lib/postgresql/data
+    ports:
+        - "5432:5432"
+ 
+pgadmin:
+    image: dpage/pgadmin4:4.18
+    restart: always
+    environment:
+        PGADMIN_DEFAULT_EMAIL: averneus@gmail.com
+        PGADMIN_DEFAULT_PASSWORD: secret
+        PGADMIN_LISTEN_PORT: 80
+        ports:
+            - "8080:80"
+        volumes:
+            - /workspaces/Dev/dashboard-global/data/pgadmin:/var/lib/pgadmin
+        links:
+            - "db:pgsql-server"
+volumes:
+    /workspaces/Dev/dashboard-global/data/db:
+        /workspaces/Dev/dashboard-global/data/pgadmin:

@@ -1,4 +1,5 @@
 import automagica as magic
+import sys
 
 def get_btcusd():
     # TODO:
@@ -6,6 +7,7 @@ def get_btcusd():
     ## add drag_mouse activities to be more human-like
     browser = magic.activities.Chrome()
     browser.browse_to("https://www.google.com")
+    sys.exit()
     search_bar = browser.find_element_by_xpath("//*[@id='tsf']/div[2]/div[1]/div[1]/div/div[2]/input")
     while(not (search_bar.is_displayed() and search_bar.is_enabled()) ):
         magic.wait(1)
