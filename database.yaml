@@ -25,7 +25,7 @@ services:
         ports:
             - "8080:80"
         volumes:
-            - /home/uad/develop/dashboard-global/data/pgadmin:/var/lib/pgadmin
+            - /home/uad/develop/dashboard-global/data/pgadmin:/var/lib/postgresql/data/pgadmin
         links:
             - "db:pgsql-server"
 #volumes:
