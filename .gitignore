@@ -2,4 +2,8 @@ venv
 .ipynb_checkpoints
 data
 data-to-scrap
-
+*.yaml
+dashboard-global-old/
+drivers/*
+__pycache__
+debug.log
